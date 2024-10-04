@@ -1,7 +1,12 @@
 import React from "react";
+import Seo from "@/ui/components/Seo";
 
 const App = () => {
-  return <div className="text-center">App</div>;
+  return (
+    <>
+      <Seo title="Coders Monkeys" description="Share your project" />
+    </>
+  );
 };
 
 export default App;
