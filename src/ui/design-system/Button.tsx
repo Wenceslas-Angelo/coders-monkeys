@@ -1,12 +1,13 @@
 import React from "react";
 import clsx from "clsx";
+import { IconType } from "react-icons";
 
 type Props = {
   type?: "button" | "submit" | "reset";
   children?: React.ReactNode;
   size?: "small" | "medium" | "large";
   variant?: "accent" | "secondary" | "outline" | "disabled" | "icon";
-  icon?: unknown;
+  icon?: IconType;
   iconTheme?: "accent" | "secondary" | "gray";
   iconPosition?: "left" | "right";
   disabled?: boolean;
@@ -20,7 +21,7 @@ const Button = ({
   children,
   size = "medium",
   variant = "accent",
-  icon,
+  icon: Icon,
   iconTheme = "accent",
   iconPosition = "right",
   disabled,
@@ -29,15 +30,31 @@ const Button = ({
   onClick,
 }: Props) => {
   let sizeStyles = "";
+  let iconSize = 0;
   switch (size) {
     case "small":
-      sizeStyles = "text-caption3 font-medium px-[14px] py-[12px]";
+      sizeStyles = `text-caption3 font-medium ${
+        variant === "icon"
+          ? "w-[40px] h-[40px] flex justify-center items-center"
+          : "px-[14px] py-[12px]"
+      }`;
+      iconSize = 18;
       break;
     case "medium":
-      sizeStyles = "text-caption2 font-medium px-[18px] py-[15px]";
+      sizeStyles = `text-caption2 font-medium ${
+        variant === "icon"
+          ? "w-[50px] h-[50px] flex justify-center items-center"
+          : "px-[18px] py-[15px]"
+      }`;
+      iconSize = 20;
       break;
     case "large":
-      sizeStyles = "text-caption1 font-medium px-[22px] py-[18px]";
+      sizeStyles = `text-caption1 font-medium ${
+        variant === "icon"
+          ? "w-[60px] h-[60px] flex justify-center items-center"
+          : "px-[22px] py-[18px]"
+      }`;
+      iconSize = 24;
       break;
   }
 
@@ -59,7 +76,16 @@ const Button = ({
         "bg-gray-400 border border-gray-500 text-gray-600 cursor-not-allowed rounded";
       break;
     case "icon":
-      variantStyles = "";
+      if (iconTheme === "accent") {
+        variantStyles =
+          "bg-primary hover:bg-primary-400 text-white rounded-full";
+      } else if (iconTheme === "secondary") {
+        variantStyles =
+          "bg-primary-200 hover:bg-primary-300/50 text-primary rounded-full";
+      } else {
+        variantStyles =
+          "bg-gray-700 hover:bg-gray-600/50 text-white rounded-full";
+      }
       break;
   }
 
@@ -70,7 +96,15 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {children}
+      {Icon && variant === "icon" ? (
+        <Icon size={iconSize} />
+      ) : (
+        <div className="flex items-center gap-1">
+          {Icon && iconPosition === "left" && <Icon size={iconSize} />}
+          {children}
+          {Icon && iconPosition === "right" && <Icon size={iconSize} />}
+        </div>
+      )}
     </button>
   );
 };

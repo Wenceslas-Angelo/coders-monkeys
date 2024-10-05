@@ -1,14 +1,13 @@
 import React from "react";
 import Seo from "@/ui/components/Seo";
-import Typography from "./ui/design-system/Typography";
+import Button from "@/ui/design-system/Button";
+import { TiUserOutline } from "react-icons/ti";
 
 const App = () => {
   return (
     <>
       <Seo title="Coders Monkeys" description="Share your project" />
-      <Typography variant="display" theme="gray" component="h1">
-        Hello world! this is Coders Monkeys :)
-      </Typography>
+      <Button icon={TiUserOutline} variant="icon" iconTheme="gray" />
     </>
   );
 };
