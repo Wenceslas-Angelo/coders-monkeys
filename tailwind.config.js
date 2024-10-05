@@ -159,6 +159,9 @@ export default {
         },
       ],
     },
+    borderRadius: {
+      DEFAULT: "10px",
+    },
     extend: {},
   },
   plugins: [],
