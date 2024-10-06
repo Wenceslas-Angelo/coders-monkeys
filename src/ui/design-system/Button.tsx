@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { IconType } from "react-icons";
+import Spinner from "./Spinner";
 
 type Props = {
   type?: "button" | "submit" | "reset";
@@ -92,19 +93,36 @@ const Button = ({
   return (
     <button
       type={type}
-      className={clsx(sizeStyles, variantStyles, className)}
+      className={clsx(
+        sizeStyles,
+        variantStyles,
+        className,
+        isLoading && "cursor-wait",
+        "relative"
+      )}
       onClick={onClick}
       disabled={disabled}
     >
-      {Icon && variant === "icon" ? (
-        <Icon size={iconSize} />
-      ) : (
-        <div className={clsx(Icon && "flex items-center gap-1")}>
-          {Icon && iconPosition === "left" && <Icon size={iconSize} />}
-          {children}
-          {Icon && iconPosition === "right" && <Icon size={iconSize} />}
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          {variant === "accent" || variant === "icon" ? (
+            <Spinner size="small" variant="white" />
+          ) : (
+            <Spinner size="small" />
+          )}
         </div>
       )}
+      <div className={clsx(isLoading && "invisible")}>
+        {Icon && variant === "icon" ? (
+          <Icon size={iconSize} />
+        ) : (
+          <div className={clsx(Icon && "flex items-center gap-1")}>
+            {Icon && iconPosition === "left" && <Icon size={iconSize} />}
+            {children}
+            {Icon && iconPosition === "right" && <Icon size={iconSize} />}
+          </div>
+        )}
+      </div>
     </button>
   );
 };
