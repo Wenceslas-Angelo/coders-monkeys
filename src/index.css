@@ -7,3 +7,13 @@
     font-family: "Inter", sans-serif;
   }
 }
+
+a:hover {
+  @apply text-primary;
+}
+
+.animate,
+a,
+a:hover {
+  transition: all 0.2s ease-in-out;
+}
