@@ -2,6 +2,7 @@ import React from "react";
 import Seo from "@/ui/components/Seo";
 import Layout from "@/ui/components/Layout";
 import HeroTop from "@/ui/modules/landing-page/HeroTop";
+import Featured from "@/ui/modules/landing-page/Featured";
 
 const LandingPage = () => {
   return (
@@ -10,6 +11,7 @@ const LandingPage = () => {
 
       <Layout>
         <HeroTop />
+        <Featured />
       </Layout>
     </>
   );
