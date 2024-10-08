@@ -3,6 +3,7 @@ import Container from "@/ui/components/Container";
 import Logo from "@/ui/design-system/Logo";
 import AuthTitle from "@/ui/modules/auth/AuthTitle";
 import Box from "@/ui/design-system/Box";
+import AuthForm from "./AuthForm";
 
 type Props = {
   variant: "login" | "register";
@@ -19,6 +20,7 @@ const Auth = ({ variant }: Props) => {
         <Box>
           <Logo />
           <AuthTitle variant={variant} />
+          <AuthForm variant={variant} />
         </Box>
       </div>
       <div className="flex items-center justify-center border-r border-primary-300/40">
