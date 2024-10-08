@@ -12,7 +12,7 @@ const Box = ({
   children,
   className,
   padding_x = "px-9",
-  padding_y = "px-9",
+  padding_y = "py-9",
 }: Props) => {
   return (
     <div
