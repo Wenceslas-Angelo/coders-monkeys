@@ -8,7 +8,7 @@ type Props = {
   id: "email" | "password" | "username";
   placeholder: string;
   register: UseFormRegister<AuthFormTypes>;
-  errors: FieldErrors;
+  errors: FieldErrors<AuthFormTypes>;
 };
 
 const Input = ({ type, id, placeholder, register, errors }: Props) => {
@@ -21,7 +21,10 @@ const Input = ({ type, id, placeholder, register, errors }: Props) => {
         required: true,
       })}
       className={clsx(
-        "w-full p-4 font-light border border-gray-400 rounded focus:outline-none focus:ring-1 focus:ring-primary placeholder-gray-600"
+        "w-full p-4 font-light border rounded focus:outline-none focus:ring-1",
+        errors[id]
+          ? "focus:ring-alert-danger placeholder-alert-danger border-alert-danger text-alert-danger"
+          : "focus:ring-primary placeholder-gray-600 border-gray-400"
       )}
     />
   );

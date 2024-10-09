@@ -28,6 +28,11 @@ export default {
         800: "#333333",
         DEFAULT: "#1d1d1d",
       },
+      alert: {
+        danger: "#ff4e4e",
+        success: "#980a1",
+        warning: "#fe872f",
+      },
     },
     fontSize: {
       "8xl": [

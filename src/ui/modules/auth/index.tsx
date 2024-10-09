@@ -15,7 +15,7 @@ const Auth = ({ variant }: Props) => {
     <Container className="grid grid-cols-1 md:grid-cols-2 h-screen">
       <div
         className={`flex justify-center items-center flex-col space-y-2  ${
-          variant === "register" ? "order-2" : "order-1"
+          variant === "register" ? "order-1" : "order-0"
         } `}
       >
         <Box>

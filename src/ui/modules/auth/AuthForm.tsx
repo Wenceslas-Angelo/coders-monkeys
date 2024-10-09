@@ -47,7 +47,7 @@ const AuthForm = ({ variant }: Props) => {
         register={register}
         errors={errors}
       />
-      <Button className="w-full">
+      <Button type="submit" className="w-full">
         {variant === "login" ? "Login" : "Register"}
       </Button>
     </form>
