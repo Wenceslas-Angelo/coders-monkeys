@@ -20,7 +20,9 @@ const Input = ({ type, id, placeholder, register, errors }: Props) => {
       {...register(id, {
         required: true,
       })}
-      className={clsx("")}
+      className={clsx(
+        "w-full p-4 font-light border border-gray-400 rounded focus:outline-none focus:ring-1 focus:ring-primary placeholder-gray-600"
+      )}
     />
   );
 };
