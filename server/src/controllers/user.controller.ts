@@ -35,9 +35,7 @@ export const signup = async (req: Request, res: Response) => {
       .status(201)
       .json({ success: true, message: "User signed up successfully" });
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, error, errorMessage: "Error signed up user" });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -78,8 +76,6 @@ export const signin = async (req: Request, res: Response) => {
       token: token,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ success: false, error, errorMessage: "Error signed in user" });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
